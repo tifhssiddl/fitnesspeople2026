@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>재미로 보는 2026 건강운 테스트🍀 | FitnessPeople Woman</title>
+  <style>
+    body {
+      font-family: "Pretendard", sans-serif;
+      margin: 0;
+      background-color: #fff;
+      color: #333;
+      text-align: center;
+    }
+    .page {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      padding: 20px;
+    }
+    .active {
+      display: flex;
+    }
+    h1 {
+      color: #ff69b4;
+      font-size: 1.8em;
+      margin-bottom: 10px;
+    }
+    button {
+      background-color: #ff69b4;
+      color: #fff;
+      border: none;
+      padding: 14px 30px;
+      border-radius: 8px;
+      font-size: 1.1em;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    button:hover {
+      background-color: #ff4a8a;
+    }
+    select {
+      padding: 10px;
+      margin: 10px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      font-size: 1em;
+    }
+    .small-text {
+      color: #999;
+      font-size: 0.9em;
+      margin-top: 10px;
+    }
+    img.logo {
+      width: 120px;
+      margin-bottom: 10px;
+    }
+    img.character {
+      width: 180px;
+      margin: 20px 0;
+    }
+    footer {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      font-size: 0.7em;
+      color: rgba(0,0,0,0.4);
+    }
+  </style>
+</head>
+<body>
+  <!-- 1️⃣ 시작 페이지 -->
+  <div id="page1" class="page active">
+    <img src="logo.png" alt="FitnessPeople Woman 로고" class="logo">
+    <h1>재미로 보는 2026 건강운 테스트🍀</h1>
+    <p>올해 나의 건강운은?<br>올해 나에게 필요한 운동 루틴까지 알아보세요 💪</p>
+    <img src="character_start.png" alt="캐릭터 이미지" class="character">
+    <button onclick="nextPage(2)">지금 바로 시작하기 💖</button>
+    <p class="small-text">(선물도 준비했으니 끝까지 참여해보세요🎁)</p>
+    <footer>© FitnessPeople Woman 2026</footer>
+  </div>
+
+  <!-- 2️⃣ 선택 페이지 -->
+  <div id="page2" class="page">
+    <img src="logo.png" alt="FitnessPeople Woman 로고" class="logo">
+    <h1>당신의 생년월을 선택해주세요 💕</h1>
+    <div>
+      <select id="year">
+        <option value="">태어난 해</option>
+        <script>
+          for(let y=1950; y<=2010; y++){
+            document.write(`<option value="${y}">${y}년</option>`);
+          }
+        </script>
+      </select>
+      <select id="month">
+        <option value="">태어난 달</option>
+        <script>
+          for(let m=1; m<=12; m++){
+            document.write(`<option value="${m}">${m}월</option>`);
+          }
+        </script>
+      </select>
+    </div>
+    <button onclick="showResult()">결과 보기 💕</button>
+    <img src="character_select.png" alt="선택 캐릭터" class="character">
+    <footer>© FitnessPeople Woman 2026</footer>
+  </div>
+
+  <!-- 3️⃣ 결과 페이지 -->
+  <div id="page3" class="page">
+    <img src="logo.png" alt="FitnessPeople Woman 로고" class="logo">
+    <h1>💫 당신의 2026년 건강운은…</h1>
+    <p class="small-text">(이 콘텐츠는 재미로만 봐주세요🍀)</p>
+    <img src="character_result.png" alt="근력 캐릭터" class="character">
+    <p id="resultText">꾸준한 근력운동으로 더 단단해지는 해예요!<br>벤치프레스나 스쿼트처럼<br>한 번에 큰 힘을 내보세요 💪</p>
+    <h3>🎁 이벤트 참여 안내 💕</h3>
+    <p>에어팟 프로 · PT권 · 헬스회원권 등<br>건강한 한 해를 위한 선물을 드립니다!</p>
+    <button onclick="alert('이벤트 응모 페이지로 이동합니다!')">이벤트 응모하기 (2월 15일까지!)</button>
+    <footer>© FitnessPeople Woman 2026</footer>
+  </div>
+
+  <script>
+    function nextPage(num) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById(`page${num}`).classList.add('active');
+    }
+
+    function showResult() {
+      const year = document.getElementById('year').value;
+      const month = document.getElementById('month').value;
+      if (!year || !month) {
+        alert('태어난 해와 달을 모두 선택해주세요 💕');
+        return;
+      }
+      nextPage(3);
+    }
+  </script>
+</body>
+</html>
